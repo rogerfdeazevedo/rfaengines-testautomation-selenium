@@ -27,40 +27,48 @@ public class ReportFactory {
 	 * @return Retorna instância de um novo report.
 	 */
 	public static ExtentReports novoReport() {
+
 		ExtentReports extent = null;
+
 		try {
+
 			StringBuilder reportDir = new StringBuilder();
-			reportDir.append(PropertiesUtil.getValue("report.dir"));
+			reportDir.append(System.getProperty("user.dir")).append("-logs");
 			ArquivosUtil.criarDir(reportDir.toString());
 
 			StringBuilder evidencesDir = new StringBuilder();
-			evidencesDir.append(PropertiesUtil.getValue("report.dir")).append("/evidencias");
+			evidencesDir.append(reportDir.toString()).append("\\evidencias");
 			ArquivosUtil.criarDir(evidencesDir.toString());
 
-			StringBuilder imgsDir = new StringBuilder();
-			imgsDir.append(PropertiesUtil.getValue("report.dir")).append("/imgs");
-			ArquivosUtil.criarDir(imgsDir.toString());
+			String logoName = PropertiesUtil.getValue("report.logoname");
 
 			StringBuilder logoDir = new StringBuilder();
-			logoDir.append(System.getProperty("user.dir")).append("/src/main/resources/imgs/logo-sicredi.png");
+			logoDir.append(System.getProperty("user.dir")).append("\\src\\main\\resources\\imgs\\").append(logoName);
 
-			ImagensUtil.copiarImagem(logoDir.toString(), imgsDir.append("/logo-sicredi.png").toString());
+			StringBuilder imgsDir = new StringBuilder();
+			imgsDir.append(reportDir.toString()).append("\\imgs");
+			ArquivosUtil.criarDir(imgsDir.toString());
+
+			imgsDir.append("\\").append(logoName);
+
+			ImagensUtil.salvarImagem(logoDir.toString(), imgsDir.toString());
 
 			StringBuilder reportName = new StringBuilder();
-			reportName.append(PropertiesUtil.getValue("report.dir")).append("/")
-					.append(PropertiesUtil.getValue("report.name")).append("-").append(DataHoraUtil.getData("yyyyMMdd"))
-					.append(".html");
-
-			StringBuilder reportXmlConfig = new StringBuilder();
-			reportXmlConfig.append(System.getProperty("user.dir")).append(PropertiesUtil.getValue("report.xmlconfig"));
+			reportName.append(reportDir.toString()).append("/").append(PropertiesUtil.getValue("report.name"))
+					.append("-").append(DataHoraUtil.getData("yyyyMMdd")).append(".html");
 
 			boolean replaceExist = false;
 
 			extent = new ExtentReports(reportName.toString(), replaceExist, DisplayOrder.OLDEST_FIRST,
 					NetworkMode.ONLINE);
 
-			extent.loadConfig(new File(reportXmlConfig.toString()));
-			
+			StringBuilder reportXmlConfig = new StringBuilder();
+			reportXmlConfig.append(System.getProperty("user.dir")).append(PropertiesUtil.getValue("report.xmlconfig"));
+
+			if (ArquivosUtil.arquivoExisteNoDir(reportXmlConfig.toString())) {
+				extent.loadConfig(new File(reportXmlConfig.toString()));
+			}
+
 		} catch (Exception e) {
 			LOGGER.error("Falha ao criar novo report ", e);
 		}

@@ -18,8 +18,8 @@ public class PropertiesUtil {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Nome
-	 *            da propriedade contida no arquivo.
+	 * @param propriedade
+	 *            Nome da propriedade contida no arquivo.
 	 * @return Valor da propriedade contida no arquivo.
 	 */
 	public static String getValue(String propriedade) {
@@ -31,7 +31,7 @@ public class PropertiesUtil {
 			properties.load(new FileInputStream(fileLocation.toString()));
 			value = properties.getProperty(propriedade);
 		} catch (IOException e) {
-			LOGGER.error("Falha ao carregar properties ", e);	
+			LOGGER.error("Falha ao carregar properties ", e);
 			LOGGER.error(e.getMessage());
 		}
 		return value;

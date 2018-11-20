@@ -69,8 +69,8 @@ public enum DriverFactory {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Nome
-	 *            do browser.
+	 * @param browser
+	 *            Nome do browser.
 	 * @return Retorna nova instância do browser selecionado.
 	 */
 	public static WebDriver novaInstancia(String browser) {

@@ -1,7 +1,6 @@
 package com.br.rfaengines.testautomation.selenium.report;
 
 import com.br.rfaengines.testautomation.selenium.test.ScreenShot;
-import com.br.rfaengines.testautomation.selenium.util.PropertiesUtil;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -28,8 +27,8 @@ public class ReportTestManager {
 	 */
 	public static void adicionarEvidencia() {
 		String dirEvidencias = ReportTestManager.getDirEvidencias();
-		String imagePath = ScreenShot.takeScreenshot(dirEvidencias);
-		test.log(LogStatus.INFO, test.addScreenCapture (imagePath));
+		String imagePath = "./evidencias/" + ScreenShot.takeScreenshot(dirEvidencias);
+		test.log(LogStatus.INFO, test.addScreenCapture(imagePath));
 	}
 
 	/**
@@ -37,13 +36,13 @@ public class ReportTestManager {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Mensagem
-	 *            de texto.
+	 * @param mensagem
+	 *            Mensagem de texto.
 	 */
 	public static void adicionarEvidencia(String mensagem) {
 		String dirEvidencias = ReportTestManager.getDirEvidencias();
-		String imagePath = ScreenShot.takeScreenshot(dirEvidencias);
-		test.log(LogStatus.INFO, mensagem + test.addScreenCapture (imagePath));
+		String imagePath = "./evidencias/" + ScreenShot.takeScreenshot(dirEvidencias);
+		test.log(LogStatus.INFO, mensagem + "<br>" + test.addScreenCapture(imagePath));
 	}
 
 	/**
@@ -51,11 +50,12 @@ public class ReportTestManager {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @return Retorna a string do diretório de evidências.
+	 * @return Retorna o caminho do diretório de evidências.
 	 */
 	public static String getDirEvidencias() {
 		StringBuilder dirEvidencias = new StringBuilder();
-		dirEvidencias.append(PropertiesUtil.getValue("report.dir")).append("/evidencias");
+		dirEvidencias.append(System.getProperty("user.dir")).append("-logs")
+				.append("/evidencias");
 		return dirEvidencias.toString();
 	}
 

@@ -19,8 +19,8 @@ public class ArquivosUtil {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Caminho
-	 *            onde deve ser criado o novo diretório.
+	 * @param dir
+	 *            Caminho onde deve ser criado o novo diretório.
 	 */
 	public static void criarDir(String dir) {
 		File directory = new File(dir);
@@ -30,13 +30,13 @@ public class ArquivosUtil {
 	}
 
 	/**
-	 * Lê cada linha de um arquivo de texto.
+	 * Lê um arquivo de texto, linha por linha.
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Caminho
-	 *            e nome do arquivo.
-	 * @return Retorna uma lista do tipo string, com o conteúdo do arquivo.
+	 * @param dirArquivo
+	 *            Caminho e nome do arquivo.
+	 * @return Retorna uma lista com o conteúdo do arquivo, lido de cada linha.
 	 */
 	public static ArrayList<String> lerArquivo(String dirArquivo) {
 		ArrayList<String> linhasDoArquivo = new ArrayList<String>();
@@ -58,8 +58,11 @@ public class ArquivosUtil {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Caminho
-	 *            e nome do arquivo. Lista do tipo string com o conteúdo do arquivo.
+	 * @param dirDestino
+	 *            Caminho e nome do arquivo.
+	 * @param linhasDoArquivo
+	 *            Lista com o conteúdo do arquivo, lido de cada linha
+	 * 
 	 * @return Retorna uma lista do tipo string, com o conteúdo do arquivo.
 	 */
 	public static void salvarArquivo(String dirDestino, ArrayList<String> linhasDoArquivo) {
@@ -83,9 +86,9 @@ public class ArquivosUtil {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Caminho
-	 *            e nome do arquivo.
-	 * @return Retorna true se o arquivo existe, e false se não existe.
+	 * @param dirArquivo
+	 *            Caminho e nome do arquivo.
+	 * @return Retorna verdadeiro se o arquivo existe, e falso se não existe.
 	 */
 	public static boolean arquivoExisteNoDir(String dirArquivo) {
 		return new File(dirArquivo).exists();

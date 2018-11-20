@@ -11,6 +11,13 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+/**
+ * Implementa a ITestListener do TestNG para gerar o report e obter os
+ * resultados de execução dos testes.
+ * 
+ * @author roger_azevedo
+ * @since 17/05/2018
+ */
 public class TestListener implements ITestListener {
 
 	private static final Logger LOGGER = Logger.getLogger(TestListener.class);
@@ -21,13 +28,8 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onStart(ITestContext context) {
-		nomeTeste = context.getAllTestMethods()[0].getRealClass().getSimpleName();		
-		report = ReportManager.getInstance();		
-//		String browser = PropertiesUtil.getValue("browser.default");
-//		report.addSystemInfo("Browser", browser);
-//		report.addSystemInfo("Browser Version", PropertiesUtil.getValue("browser.version." + browser.toLowerCase()));
-//		report.addSystemInfo("Environment", PropertiesUtil.getValue("env.default"));
-//		report.addSystemInfo("Host", PropertiesUtil.getValue("url.default"));
+		nomeTeste = context.getAllTestMethods()[0].getRealClass().getSimpleName();
+		report = ReportManager.getInstance();
 	}
 
 	@Override

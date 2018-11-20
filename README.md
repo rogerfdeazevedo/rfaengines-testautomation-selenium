@@ -5,9 +5,10 @@ Este e um projeto com utilizacao de boas praticas e facilidades para ajuda-lo na
 ## Fucionalidades
 
 * ExtentReport
-* Selecaoo de ambiente
+* Selecao de ambiente
 * Criacao automatica de logs
 * JavaFaker
 * Propriedades
 * Arquivos - Leitura e escrita
 * Imagem - ScreenShot, salvar e copiar
+# rfaengines-testautomation-selenium

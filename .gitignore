@@ -1,0 +1,7 @@
+# .gitignore -Ignorar
+.settings/
+logs/
+target/
+test-output/
+.classpath
+.project

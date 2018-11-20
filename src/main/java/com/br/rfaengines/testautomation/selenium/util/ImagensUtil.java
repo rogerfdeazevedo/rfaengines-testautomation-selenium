@@ -20,8 +20,10 @@ public class ImagensUtil {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Diretório
-	 *            de origem da imagem, e diretório onde deve ser salvo a cópia.
+	 * @param origemImg
+	 *            Diretório de origem da imagem.
+	 * @param destinoImg
+	 *            Diretório onde deve ser salvo a cópia.
 	 */
 	public static void copiarImagem(String origemImg, String destinoImg) {
 		try {
@@ -39,17 +41,38 @@ public class ImagensUtil {
 	}
 
 	/**
+	 * Salvar uma imagem da web em um diretório.
+	 * 
+	 * @author roger_azevedo
+	 * @since 18/05/2018
+	 * @param urlImg
+	 *            Url web da imagem
+	 * @param dirDestinoImg
+	 *            Diretório onde deve ser salvo a cópia.
+	 */
+	public static void salvarWebImagem(String urlImg, String dirDestinoImg) {
+		try {
+			BufferedImage saveImage = ImageIO.read(new URL(urlImg));
+			ImageIO.write(saveImage, "png", new File(dirDestinoImg));
+		} catch (Exception e) {
+			LOGGER.error("Falha ao salvar imagem", e);
+		}
+	}
+	
+	/**
 	 * Salvar uma imagem em um diretório.
 	 * 
 	 * @author roger_azevedo
 	 * @since 18/05/2018
-	 * @param Url
-	 *            web da imagem, e diretório onde deve ser salvo a cópia.
+	 * @param dirOrigemImg
+	 *            Diretório de origem da imagem.
+	 * @param dirDestinoImg
+	 *            Diretório onde deve ser salvo a cópia.
 	 */
-	public void salvarImagem(String urlImg, String dirDestinoImg) {
+	public static void salvarImagem(String dirOrigemImg, String dirDestinoImg) {
 		try {
-			BufferedImage saveImage = ImageIO.read(new URL(urlImg));
-			ImageIO.write(saveImage, "png", new File(dirDestinoImg + ".png"));
+			BufferedImage saveImage = ImageIO.read(new File(dirOrigemImg));
+			ImageIO.write(saveImage, "png", new File(dirDestinoImg));
 		} catch (Exception e) {
 			LOGGER.error("Falha ao salvar imagem", e);
 		}

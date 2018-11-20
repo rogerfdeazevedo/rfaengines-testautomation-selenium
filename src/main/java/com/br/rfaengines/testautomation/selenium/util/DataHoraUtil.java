@@ -10,8 +10,8 @@ public class DataHoraUtil {
 	 * 
 	 * @author roger_azevedo
 	 * @since 17/05/2018
-	 * @param Formato
-	 *            desejado. Ex.: yyyyMMddHHmmss
+	 * @param formato
+	 *            Formato desejado. Ex.: yyyyMMddHHmmss
 	 * @return Retorna data/hora de acordo com o formato indicado.
 	 */
 	public static String getData(String formato) {

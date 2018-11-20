@@ -6,6 +6,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class CapabilitiesManager {
 
+	/**
+	 * Capacidades para o navegador IE.
+	 * 
+	 * @author roger_azevedo
+	 * @since 17/05/2018
+	 * @return DesiredCapabilities Retorna configuração de capacidades para o
+	 *         browser IE.
+	 */
 	public static DesiredCapabilities getIE() {
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
@@ -17,5 +25,5 @@ public class CapabilitiesManager {
 		capabilities.setCapability("requireWindowFocus", true);
 		return capabilities;
 	}
-	
+
 }

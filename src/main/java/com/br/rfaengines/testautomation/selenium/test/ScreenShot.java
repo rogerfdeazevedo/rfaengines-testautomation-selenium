@@ -32,21 +32,15 @@ public class ScreenShot {
 		StringBuilder dirSalvo = new StringBuilder();
 		try {
 			WebDriver driver = DriverManager.getDriver();			
-			
-			nomeImg.append("evidencia_").append(DataHoraUtil.getData("yyyyMMddHHmmss")).append(".png");
-			
+			nomeImg.append("evidencia_").append(DataHoraUtil.getData("yyyyMMddHHmmss")).append(".png");			
 			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);			
-			
 			dirSalvo.append(dirDestino).append("/").append(nomeImg);
-			
 			BufferedImage fullImg = ImageIO.read(screenshot);
-			
-			ImageIO.write(fullImg, "png", new File(dirSalvo.toString() + ".png"));
-			
+			ImageIO.write(fullImg, "png", new File(dirSalvo.toString()));
 		} catch (Exception e) {
 			LOGGER.error("Falha ao tentar capturar imagem da tela ", e);
-		}		
-		return dirSalvo.toString().replace("file:///", "");
+		}				
+		return nomeImg.toString();
 	}
 
 }
