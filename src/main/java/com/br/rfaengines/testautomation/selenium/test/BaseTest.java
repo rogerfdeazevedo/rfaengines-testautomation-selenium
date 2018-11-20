@@ -29,7 +29,8 @@ public abstract class BaseTest {
 	@BeforeTest
 	public void preCondition() {
 		String browser = PropertiesUtil.getValue("browser.default");
-		String url = PropertiesUtil.getValue("url.dafault");
+		String env = PropertiesUtil.getValue("env.default");
+		String url = PropertiesUtil.getValue("url." + env + ".default");
 		String fakerLocale = PropertiesUtil.getValue("faker.locale");
 		faker = new Faker(new Locale(fakerLocale));
 		WebDriver driver = DriverFactory.novaInstancia(browser);
