@@ -72,9 +72,10 @@ public class TestListener implements ITestListener {
 
 	private void failTest(ITestResult iTestResult) {
 		try {
-			test.log(LogStatus.FAIL, iTestResult.getThrowable()
-					+ test.addScreenCapture(ScreenShot.takeScreenshot(ReportTestManager.getDirEvidencias())));
-			LOGGER.error(iTestResult.getThrowable().getCause());
+			String error = iTestResult.getThrowable().toString();
+			test.log(LogStatus.FAIL, error + test.addScreenCapture(
+					"./evidencias/" + ScreenShot.takeScreenshot(ReportTestManager.getDirEvidencias())));
+			LOGGER.error(iTestResult.getThrowable());
 		} catch (Exception e) {
 			test.log(LogStatus.FAIL, e.getMessage());
 			LOGGER.error("Falha ao tentar gravar resultado do teste no report ", e);
