@@ -33,7 +33,7 @@ public class ReportFactory {
 		try {
 
 			StringBuilder reportDir = new StringBuilder();
-			reportDir.append(System.getProperty("user.dir")).append("-logs");
+			reportDir.append(System.getProperty("user.dir")).append("/").append(PropertiesUtil.getValue("report.dir"));
 			ArquivosUtil.criarDir(reportDir.toString());
 
 			StringBuilder evidencesDir = new StringBuilder();

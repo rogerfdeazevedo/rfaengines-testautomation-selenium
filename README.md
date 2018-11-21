@@ -1,6 +1,6 @@
 ## rfaengines-testautomation-selenium
 
-Este e um projeto com utilizacao de boas praticas e facilidades para ajuda-lo na criacao de testes com Selenium WebDriver.
+Este é um projeto com utilização de boas práticas e facilidades para ajuda-lo na criaçãoo de testes com Selenium WebDriver.
 
 ## Fucionalidades
 
@@ -12,3 +12,5 @@ Este e um projeto com utilizacao de boas praticas e facilidades para ajuda-lo na
 * Arquivos - Leitura e escrita
 * Imagem - ScreenShot, salvar e copiar
 
+	@roger_azevedo 
+	rogerfdeazevedo@gmail.com
