@@ -1,7 +1,6 @@
 package com.br.rfaengines.testautomation.selenium.report;
 
 import com.br.rfaengines.testautomation.selenium.test.ScreenShot;
-import com.br.rfaengines.testautomation.selenium.util.PropertiesUtil;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -55,8 +54,7 @@ public class ReportTestManager {
 	 */
 	public static String getDirEvidencias() {
 		StringBuilder dirEvidencias = new StringBuilder();
-		dirEvidencias.append(System.getProperty("user.dir")).append("/").append(PropertiesUtil.getValue("report.dir"))
-				.append("/evidencias");
+		dirEvidencias.append(ReportFactory.getReportDir()).append("/evidencias");
 		return dirEvidencias.toString();
 	}
 
