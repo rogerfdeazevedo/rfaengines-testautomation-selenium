@@ -52,6 +52,33 @@ public class ArquivosUtil {
 		}
 		return linhasDoArquivo;
 	}
+	
+	/**
+	 * Listar os arquivos de texto (.txt) em um diretório.
+	 * 
+	 * @author roger_azevedo
+	 * @since 27/11/2018
+	 * @param dirArquivo
+	 *            Caminho e nome do arquivo.
+	 * @return Retorna uma lista com o nome dos arquivos de texto no diretorio.
+	 */
+	public static ArrayList<String> listarArquivosDeTexto(String dirArquivos) {
+		ArrayList<String> listaArquivos = new ArrayList<String>();
+		try {
+			File arquivos[];
+			File diretorio = new File(dirArquivos);	
+			arquivos = diretorio.listFiles();				
+			for(int i = 0; i < arquivos.length; i++){					
+				if (arquivos[i].getName().endsWith(".txt")) {					
+					String nomeArquivo = arquivos[i].getName();						
+					listaArquivos.add(nomeArquivo);							
+				} 				   
+			}
+		} catch (Exception e) {
+			LOGGER.error("Falha ao listar arquivos em:  " + dirArquivos, e);
+		}
+		return listaArquivos;
+	}
 
 	/**
 	 * Salva um arquivo de texto.
@@ -92,6 +119,24 @@ public class ArquivosUtil {
 	 */
 	public static boolean arquivoExisteNoDir(String dirArquivo) {
 		return new File(dirArquivo).exists();
+	}
+	
+	/**
+	 * Renomeia um arquivo, alterando sua extensão para ".PROC".
+	 * 
+	 * @author roger_azevedo
+	 * @since 27/11/2018
+	 * @param dirArquivo
+	 *            Caminho e nome do arquivo.
+	 */
+	public static void renomearArquivoParaProcessado(String dirArquivo) {
+		try {
+			if(arquivoExisteNoDir(dirArquivo)) {
+				new File(dirArquivo).renameTo(new File(dirArquivo + ".PROC"));
+			}			
+		} catch (Exception e) {
+			LOGGER.error("Falha ao tentar renomear arquivo para processado ", e);
+		}
 	}
 
 }
