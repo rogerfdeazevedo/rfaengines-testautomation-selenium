@@ -1,9 +1,12 @@
 package com.br.rfaengines.testautomation.selenium.util;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.channels.FileChannel;
 
@@ -51,9 +54,14 @@ public class ImagensUtil {
 	 *            Diretório onde deve ser salvo a cópia.
 	 */
 	public static void salvarWebImagem(String urlImg, String dirDestinoImg) {
-		try {
-			BufferedImage saveImage = ImageIO.read(new URL(urlImg));
-			ImageIO.write(saveImage, "png", new File(dirDestinoImg));
+		try {			
+			URL imgWeb = new URL(urlImg);			
+			HttpURLConnection connection = (HttpURLConnection) imgWeb.openConnection();
+	        connection.connect();			
+	        InputStream in = connection.getInputStream();	        
+	        BufferedImage image = ImageIO.read(in);	        
+	        FileOutputStream fos = new FileOutputStream(new File(dirDestinoImg + ".png"));			
+	        ImageIO.write((RenderedImage) image, "png", fos);			
 		} catch (Exception e) {
 			LOGGER.error("Falha ao salvar imagem", e);
 		}
